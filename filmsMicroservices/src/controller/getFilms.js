@@ -1,4 +1,4 @@
-const Film = require("../data/index.js");
+const Film = require("../data");
 const { response } = require("../utils/index.js");
 
 module.exports = async (req, res) => {
