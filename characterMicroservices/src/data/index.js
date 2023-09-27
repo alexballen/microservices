@@ -1,13 +1,34 @@
-const characters = require("../data/characters.json");
 const axios = require("axios");
 
 module.exports = {
   list: async () => {
-    const result = await axios.get("http://localhost:8004/Character");
-    console.log(result);
-    return result;
+    const getCharacter = await axios.get("http://localhost:8004/Character");
+    return getCharacter.data;
   },
-  create: async () => {
-    throw Error("Hay un error en la DB al momento de crear el personaje");
+  getById: async (id) => {
+    const getCharacterById = await axios.get(
+      `http://localhost:8004/Character/${id}`
+    );
+    return getCharacterById.data;
+  },
+  create: async (character) => {
+    const createCharacter = await axios.post(
+      "http://localhost:8004/Character",
+      character
+    );
+    return createCharacter.data;
+  },
+  update: async (id, updatedData) => {
+    const updatedFields = await axios.put(
+      `http://localhost:8004/Character/${id}`,
+      updatedData
+    );
+    return updatedFields.data;
+  },
+  delete: async (id) => {
+    const deleteCharacter = await axios.delete(
+      `http://localhost:8004/Character/${id}`
+    );
+    return deleteCharacter.data;
   },
 };
