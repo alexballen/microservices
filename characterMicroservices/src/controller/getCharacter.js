@@ -1,7 +1,8 @@
-const Character = require("../data/index.js");
-const { response } = require("../utils/index.js");
+const Character = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  const characters = await Character.list();
-  response(res, 200, characters);
+  const { id } = req.params;
+  const character = await Character.getById(id);
+  response(res, 201, character);
 };
