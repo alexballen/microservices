@@ -1,22 +1,29 @@
 const server = require("./src/server.js");
-//const { Character, Film, Planet } = require("./src/database");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-//Planet.list().then((res) => console.log(res[0]));
-//Planet.get(1).then((res) => console.log(res));
-/* Planet.insert({
-  _id: "61",
-  name: "La Tortolan",
-  rotation_period: "18222",
-  diameter: "895656",
-  terrain: "Water",
-}).then((res) => console.log(res)); */
-//Planet.delete(60).then((res) => console.log(res));
+server.use(
+  "/Character",
+  createProxyMiddleware({
+    target: "http://database:8004/Character",
+    changeOrigin: true,
+  })
+);
 
-/* const updatedData = {
-  orbital_period: "485",
-  gravity: "10",
-};
-Planet.update(59, updatedData).then((res) => console.log(res)); */
+server.use(
+  "/Film",
+  createProxyMiddleware({
+    target: "http://database:8004/Film",
+    changeOrigin: true,
+  })
+);
+
+server.use(
+  "/Planet",
+  createProxyMiddleware({
+    target: "http://database:8004/Planet",
+    changeOrigin: true,
+  })
+);
 
 server.listen(8004, () => {
   console.log("Server listening on port 8004");
