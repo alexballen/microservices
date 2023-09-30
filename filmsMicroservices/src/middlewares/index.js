@@ -1,3 +1,4 @@
 module.exports = {
-  filmsValidation: require("./filmsValidation.js"),
+  validateId: require("./validateId.js"),
+  validateObject: require("./validateObject.js"),
 };
