@@ -1,7 +1,7 @@
 const Film = require("../data");
-const { response } = require("../utils/index.js");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
   const films = await Film.list();
-  response(res, 200, films);
+  response(res, 201, films);
 };
