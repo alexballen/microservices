@@ -1,5 +1,5 @@
 module.exports = {
   response: require("./response.js"),
-  catchedAsync: require("./catchesAsync"),
+  catchedAsync: require("./catchedAsync.js"),
   errors: require("./errors"),
 };
