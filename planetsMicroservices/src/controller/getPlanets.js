@@ -1,7 +1,7 @@
 const Planet = require("../data");
-const { response } = require("../utils/index.js");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
   const planets = await Planet.list();
-  response(res, 200, planets);
+  response(res, 201, planets);
 };
