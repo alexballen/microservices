@@ -1,7 +1,8 @@
-const Planet = require("../data/index.js");
-const { response } = require("../utils/index.js");
+const Planet = require("../data");
+const { response } = require("../utils");
 
 module.exports = async (req, res) => {
-  const newPlanet = await Planet.create();
+  const planet = req.body;
+  const newPlanet = await Planet.create(planet);
   response(res, 201, newPlanet);
 };
