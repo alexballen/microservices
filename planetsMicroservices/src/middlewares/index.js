@@ -1,3 +1,4 @@
 module.exports = {
-  planetsValidation: require("./planetsValidation.js"),
+  validateId: require("./validateId.js"),
+  validateObject: require("./validateObject.js"),
 };
