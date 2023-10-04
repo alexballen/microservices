@@ -5,19 +5,35 @@ const middlewares = require("../middlewares");
 const router = Router();
 
 router.get("/", controller.getCharacters);
-router.get("/:id", middlewares.validateId, controller.getCharacter);
+router.get(
+  "/:id",
+  middlewares.validateId,
+  middlewares.searchById,
+  controller.getCharacter
+);
 
-router.post("/", middlewares.validateObject, controller.createCharacter);
+router.post(
+  "/",
+  middlewares.findDuplicateId,
+  middlewares.validateObject,
+  controller.createCharacter
+);
 
 router.put("/", middlewares.validateId);
 router.put(
   "/:id",
   middlewares.validateId,
+  middlewares.searchById,
   middlewares.validateObject,
   controller.updateCharacter
 );
 
 router.delete("/", middlewares.validateId);
-router.delete("/:id", middlewares.validateId, controller.deleteCharacter);
+router.delete(
+  "/:id",
+  middlewares.validateId,
+  middlewares.searchById,
+  controller.deleteCharacter
+);
 
 module.exports = router;
