@@ -9,6 +9,6 @@ module.exports = (req, res, next) => {
       throw new ClientError("ID no es un número válido¡", 401);
     }
   } else {
-    throw new ClientError("Falta el id del personaje¡", 401);
+    throw new ClientError("Falta el ID¡", 401);
   }
 };
